@@ -1,5 +1,15 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      Welcome to EmberNote
+    </div>
+    <div class="col-md-10">
+      {{#link-to 'register'}}register{{/link-to}}
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      {{outlet}}
+    </div>
+  </div>
+</div>
