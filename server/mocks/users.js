@@ -11,8 +11,10 @@ module.exports = function(app) {
   var userDB = new nedb({ filename : 'users', autoload: true});
 
   usersRouter.get('/', function(req, res) {
-    res.send({
-      'users': []
+    userDB.find(req.query).exec(function(error, users) {
+      res.send({
+        'users': users
+      });
     });
   });
 
@@ -25,7 +27,7 @@ module.exports = function(app) {
       else
         req.body.user.id = 1;
 
-      // Insert the new recod into our datastore, and return the newly created record
+      // Insert the new record into our datastore, and return the newly created record
       // to Ember Data
       userDB.insert(req.body.user, function(err,newUser) {
         res.status(201);
