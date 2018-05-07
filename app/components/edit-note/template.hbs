@@ -1,0 +1,14 @@
+<div>
+  {{input value=note.title}}
+  <button {{action "saveNote"}}>Save</button>
+  <button {{action "closeNote"}}>Close</button>
+</div>
+<div>
+  {{textarea rows=10 cols=60 value=note.body}}
+</div>
+<div>
+  {{markdown-to-html markdown=note.body}}
+</div>
+<div>
+  {{yield}}
+</div>
